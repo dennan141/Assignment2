@@ -1,0 +1,81 @@
+﻿<!--The View in MVC, displaying the data to the user and acts as the "human interface"-->
+@model List<Course>
+
+
+<partial name="_Notification" />
+<div class="container-fluid p-0 align-items-center">
+    <div class="row pt-4 pb-1">
+        <div class="col-6">
+            <h2 class="fw-bold">Courses</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Courses" asp-action="Create" class="btn btn-primary text-light h2 mx-auto"><i class="bi bi-plus-square text-light"></i>Add course</a>
+        </div>
+    </div>
+
+    <!--Using bootstrap classes to adapt dynamically to different display sizes-->
+
+    <table class="table table-striped table-bordered border-primary table-responsive">
+        <thead class="table-dark">
+            <!-- TODO: Change to multilanguage options in future-->
+            <tr>
+                <th>Name</th>
+                <th class="d-none d-md-table-cell">Description</th>
+                <th class="d-none d-lg-table-cell">Start date</th>
+                <th class="d-none d-lg-table-cell">End date</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            @foreach (var obj in Model)
+            {
+                <tr>
+                    <!--Title and description will minimize overflowing text-->
+                    <td class="text-break overflow-auto overflow-hidden minimize-title-text">@obj.Title</td>
+                    <td class="d-none d-md-table-cell text-break overflow-auto overflow-hidden minimize-description-text" id="custom-cell">@obj.Description</td>
+                    <!--Dates will not be displayed on smaller screens as less important-->
+                    <td class="d-none d-lg-table-cell">@obj.StartDate</td>
+                    <td class="d-none d-lg-table-cell">@obj.EndDate</td>
+                    <td>
+                        <div class="btn-group align-content-center" role="group">
+                            <a asp-controller="Courses" asp-action="Edit" asp-route-courseId="@obj.Id" class=" btn btn-primary shadow m-2">
+                                <i class="bi bi-pencil-fill"></i>Edit
+                            </a>
+                            <a asp-controller="Courses" asp-action="Delete" asp-route-courseId="@obj.Id" class="btn btn-danger shadow m-2">
+                                <i class="bi bi-trash3-fill"></i> Delete
+                            </a>
+                        </div>
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<!-- I KEEP IN CASE I NEED TO CHANGE THE WAY COURSES ARE DISPLAYED -->
+<!------------------------------------------------------------------------------------------------->
+@* <div class="row">
+
+    <!--loops thorugh courses and adds a bootstrap card for each -->
+    @foreach (var course in Model)
+    {
+        <div class="col-sm-6 mb-3 pb-3">
+            <div class="card h-100 mb-4">
+                <div class="card-body">
+
+                    <!--Content of the card from each course being looped-->
+                    <h5 class="card-title">@course.Title</h5>
+                    <p class="card-text">@course.Description</p>
+                    <!--Will contain a href to the courses ID from coursesController later-->
+                    <a href="#" class="disabled btn btn-primary">Course details added later</a>
+
+                </div>
+            </div>
+        </div>
+    }
+</div>   *@

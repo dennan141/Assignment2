@@ -1,0 +1,64 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background-image: url("../images/WhiteBricksBgImage.jpg");
+    background-size: cover;
+    background-color: floralwhite;
+}
+
+table {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+.minimize-title-text {
+    max-width: 200px;
+    max-height: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.minimize-description-text {
+    max-width: 300px;
+    max-height: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/* Changes bootstrap buttons to have nicer hover */
+.btn-primary:hover {
+    color: darkgrey;
+    cursor: pointer;
+}
+
+/* Using media query for responsiveness */
+/* Activates on smaller screens */
+@media (max-width: 700px) {
+    .overflow-auto {
+        max-height: none;
+    }
+
+    .overflow-hidden {
+        white-space: normal;
+        overflow: visible;
+        text-overflow: clip;
+    }
+}
